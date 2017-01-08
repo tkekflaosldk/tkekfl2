@@ -1,0 +1,132 @@
+* {
+  margin:0px;
+  font-family: 'Noto Sans KR', sans-serif;
+   -ms-user-select: none;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+	position: absolute;
+  overflow:hidden;
+}
+div {
+  position:absolute;
+}
+img {
+  display:block;
+}
+/*최상단*/
+
+/*리스트*/
+div#list {
+  width: 100%;
+
+  top:00%;
+  height:75%;
+  background-color: #81664E;
+}
+div#data {
+  width: 50%;
+  left:0%;
+  top:0%;
+  height:100%;
+  overflow-y: scroll;
+}
+div#test {
+  width: 50%;
+  left:50%;
+  top:0%;
+  height:100%;
+  overflow-y: scroll;
+}
+
+/*중단*/
+div#manage {
+  width: 100%;
+  top:73%;
+  height:7%;
+  background-color: #5D4A38;
+  text-align: center;
+}
+div.manage {
+  position: absolute;
+  width: 50%;
+}
+div#datamanage {
+  left:0%;
+}
+div#testmanage {
+  left:50%;
+}
+
+
+/*하단*/
+div#big4 {
+  width: 100%;
+
+  top:80%;
+  height:20%;
+  background-color: #5D4A38;
+}
+div.big4inner {
+  width: 25%;
+  text-align: center;
+  vertical-align: middle;
+}
+div#w3wd { left:0%; }
+div#w4gd { left:25%;}
+div#d3gd { left:50%;}
+div#d4wd { left:75%;}
+/*점수판 애니메이션*/
+.nonbutton {
+  position:relative;
+  padding: 4% 4%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 100%;
+}
+.nonbutton.data {
+  background: linear-gradient( 145deg, #28e, #16d )
+}
+.nonbutton.test {
+  background: linear-gradient( 145deg, #e33, #c11 )
+}
+/* 버튼 애니메이션 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); */
+.button {
+  position:relative;
+  padding: 4% 4%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0 7px #999;
+}
+.button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.button.data {
+  background: linear-gradient( 145deg, #28e, #16d )
+}
+.button.test {
+  background: linear-gradient( 145deg, #e33, #c11 )
+}
+.button.blu {
+  background: linear-gradient( 145deg, #28e, #16d );
+}
+.button.red {
+  background: linear-gradient( 145deg, #e33, #c11 );
+}
+.button.grn {
+  background: linear-gradient( 145deg, #7a6, #6b4 );
+}

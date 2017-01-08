@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no" />
+	<link rel="stylesheet" href="/index.css" type="text/css" ></link>
+
+</HEAD>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<BODY>
+	<div id='list'>
+		<div id='data'>
+		</div>
+		<div id='test'>
+		</div>
+	</div>
+	// 중단
+	<div id='manage'>
+		<div id='datamanage' class='manage'>
+			<button id="datadel" class="button red" onclick="cleardata();">삭제</button>
+			<button id="datasav" class="button grn" onclick="savedata();">저장</button>
+			<button id="dataopn" class="button blu" onclick="opendata();">열기</button>
+			<button id="datadwn" class="button blu" onclick="downdata();">다운</button>
+		</div>
+		<div id='testmanage' class='manage'>
+			<button id="testdel" class="button red" onclick="cleartest();">삭제</button>
+			<button id="testsav" class="button grn" onclick="savetest();">저장</button>
+			<button id="testopn" class="button blu" onclick="opentest();">열기</button>
+			<button id="testdwn" class="button blu" onclick="downtest();">다운</button>
+		</div>
+	</div>
+	// 하단
+	<div id='big4'>
+		<div id='w3wd' class='big4inner'>
+			<img id='w3w' src='w3w.png'></img>
+			<button id="w3wresult" class="nonbutton data">확 률</button>
+			<button id="w3wcountt" class="nonbutton test">횟 수</button>
+			<button id="w3wdata" class="button data" onclick="data('1');">기 록</button>
+			<button id="w3wtest" class="button test" onclick="test('1');">평 가</button>
+		</div>
+		<div id='w4gd' class='big4inner'>
+			<img id='w4g' src='w4g.png'></img>
+			<button id="w4gresult" class="nonbutton data">확 률</button>
+			<button id="w4gcountt" class="nonbutton test">횟 수</button>
+			<button id="w4gdata" class="button data" onclick="data('2');">기 록</button>
+			<button id="w4gtest" class="button test" onclick="test('2');">평 가</button>
+		</div>
+		<div id='d3gd' class='big4inner'>
+			<img id='d3g' src='d3g.png'></img>
+			<button id="d3gresult" class="nonbutton data">확 률</button>
+			<button id="d3gcountt" class="nonbutton test">횟 수</button>
+			<button id="d3gdata" class="button data" onclick="data('3');">기 록</button>
+			<button id="d3gtest" class="button test" onclick="test('3');">평 가</button>
+		</div>
+		<div id='d4wd' class='big4inner'>
+			<img id='d4w' src='d4w.png'></img>
+			<button id="d4wresult" class="nonbutton data">확 률</button>
+			<button id="d4wcountt" class="nonbutton test">횟 수</button>
+			<button id="d4wdata" class="button data" onclick="data('4');">기 록</button>
+			<button id="d4wtest" class="button test" onclick="test('4');">평 가</button>
+		</div>
+	</div>
+	<script src="http://cdn.socket.io/socket.io-1.2.0.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type='application/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js'></script>
+	<script type="text/javascript" src="/index.js"></script>
+</BODY>
+
+</HTML>

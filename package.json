@@ -1,0 +1,11 @@
+{
+  "name": "sdr",
+  "version": "0.0.1",
+  "description": "sdr",
+  "dependencies": {
+    "express": "4.10.2",
+    "nodemon": "^1.11.0",
+    "socket.io": "1.2.0",
+    "sqlite3": "^3.1.8"
+  }
+}
