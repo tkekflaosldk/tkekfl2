@@ -1,0 +1,27 @@
+연결했어요..!!
+[01:30] 나영 : 일단 heroku의 클라이언트
+[01:30] 나영 : 받는 페이지 보이시나요
+[01:31] 나영 : https://dashboard.heroku.com/apps
+[01:32] 나영 : 여기서 우측상단 New 누르시면
+[01:32] 나영 : create new app
+[01:32] 나영 : app name만 작성하시고 create app 누르시면
+[01:33] 나영 : 빈칸으로해도 되네요
+[01:33] 나영 : Deployment method 보시면 github 누르시면
+[01:33] 나영 : connect to github 있구
+[01:33] 나영 : github 로긴하셔서
+[01:34] 나영 : 로그인 후에 https://github.com/ 에서 우측 중상단의 New repository 보시면
+[01:34] 나영 : 클릭하시면
+[01:37] 나영 : Repository name 적으시고 Initialize this repository with a README 체크하시고 Create repository 누르시면
+[01:38] 나영 : https://github.com/아이디/저장소이름 이 주소를 heroku connect to github 에서 저장소이름 만 적으시고 search 버튼 누르셔서 찾으신다음 클릭하시면
+[01:43] 다태크 : 네 다했어용
+[01:44] 나영 : 그러면요
+[01:44] 나영 : git 페이지로 다시 볼게요
+[01:45] 나영 : https://github.com/아이디/저장소이름
+[01:45] 나영 : 이동하신후에
+[01:45] 나영 : Upload files 누르시고 ..
+[01:45] 나영 : 이제 파일을 드려야되는데요..
+[01:46] 나영 : 일단 https://github.com/eaea2121/EA 여기서 Clone or download 하신다음 Download ZIP 누르셔서 폴더에 압축 푸신다음에
+[01:47] 나영 : github 프로젝트의 upload files 화면에 드래그로 넣으신다음 맨아래에 commit changes 누르시면 돼요
+[01:47] 나영 : 그다음 search가 되시면
+[01:49] 나영 : App connected to GitHub 메뉴에서는 Release~랑 Auto~ 둘다체크하시구 맨아래 Deploy Branch 누르시면 될거에요
+[01:50] 나영 : 자동으로 서버 열리고 확인은 프로젝트명.herokuapp.com 에서 확인하실수 있을거에요

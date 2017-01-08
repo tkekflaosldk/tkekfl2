@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+
+<input id="text" type="text" />
+<input id="text1" type="text" />
+<input id="text2" type="text" />
+<button onclick = search(text.value)>org</button>
+<br/>
+<script>
+var result_list = null;
+function search(str) {
+    text1.value = text.value.substring(text.value.search("\[\{"),text.value.search("\}\];")+"\}\];".length)
+    eval(text1.value)
+    generate(text1.value)
+}
+function generate(str) {
+    var text2value = "";
+    eval(text1.value)
+    for(var i = 0 ; i < result_list.length ; i++ ){
+   var s = 0;
+   if (result_list[i].s[0]!="L"){
+       s =  2;
+   }
+   var l = 1;
+   if (result_list[i].l[0]!="3"){
+       s = 2;
+   }
+   text2value = s+l;
+    }
+    text2.value = text2value;
+}
+</script>
+
+<object data="http://ntry.com/stats/dari/popup_compare_pattern.php?date=2017-12-30,2016-05-30" type="text/html" title="Á¦¸ñ" style="overflow:visible" />  
+
+
+
+
+
+</body>
+</html>

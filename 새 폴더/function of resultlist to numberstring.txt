@@ -1,0 +1,14 @@
+ 
+function convert(result_list){ 
+	var lr;
+	var tf;
+	var text = '';
+	for (var i = 0; i < result_list.length ; i++){
+		if(result_list[i].s[0]=="L"){ lr=0 }else{ lr=2 }
+		if(result_list[i].l[0]=="3"){ tf=1 }else{ tf=2 }
+		text += ''+(lr+tf);
+	}
+	return text;
+}
+
+convert(result_list)

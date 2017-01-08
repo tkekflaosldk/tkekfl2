@@ -1,0 +1,16 @@
+
+function convert(result_list){ 
+	var lr;
+	var tf;
+	var text = '';
+	for (var i = 0; i < result_list.length ; i++){
+		lr = 1;
+		tf = 1;
+		if(result_list[i].s[0]=="R"){ lr++; }
+		if(result_list[i].l[0]=="4"){ tf++; }
+		text += ''+(lr+tf);
+	}
+	return text;
+}
+
+convert(result_list)
