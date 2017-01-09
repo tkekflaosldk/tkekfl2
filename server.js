@@ -68,6 +68,6 @@ io.sockets.on('echo', function(msg){
 io.emit(msg+"sv")
 });
 
-http.listen(port, function(){
+http.listen(process.env.PORT, function(){
     console.log('SERVER IS READY FOR [*:'+port+']');
 });
