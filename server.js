@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var port = process.env.port || 8080;
+var port = process.env.PORT;
 //var port = process.env.port || 80;
 //file
 var fs = require("fs");
