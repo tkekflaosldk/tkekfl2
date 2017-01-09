@@ -4,32 +4,87 @@
 </head>
 <body>
 
-<input id="startDate" type="date" />
+<input id="startDate" onchange="changeDate();" type="date" />
 
-<input id="endDate" type="date" />
+<input id="endDate" onchange="changeDate();" type="date" />
 
 <button onclick="click_button();" >click</button>
 
-<object src="/sample.html" />
+<div id = "list" > </div>
 
-<object src="/sample.html" />
 
 <script>
+//
 
+var startDateValue = null;
+var endDateValue = null;
+
+function changeDate(){
+  var arr1 = startDate.value.split('-');
+  var arr2 = endDate.value.split('-');
+  startDateValue = new Date(arr1[0], arr1[1], arr1[2]);
+  endDateValue   = new Date(arr2[0], arr2[1], arr2[2]);
+}
+function diffDays(d1, d2)
+{
+  var ndays;
+  var tv1 = d1.valueOf();  // msec since 1970
+  var tv2 = d2.valueOf();
+
+  ndays = (tv2 - tv1) / 1000 / 86400;
+  ndays = Math.round(ndays - 0.5);
+  return ndays;
+}
+Date.prototype.addDays = function(days)
+{
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+Date.prototype.yyyymmdd = function()
+{
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth() + 1).toString();
+    var dd = this.getDate().toString();
+
+    return yyyy+'-' + (mm[1] ? mm : '0'+mm[0])+'-' + (dd[1] ? dd : '0'+dd[0]);
+}
+
+var a ;
 function click_button(){
+  var diff = diffDays(startDateValue, endDateValue);
+  console.log(diff+":diff")
+  var tempdate = new Date(startDateValue);
+  for(var i = 0 ; i <= diff ; i++){
+    // generated days
+    var node = document.createElement('iframe');
+    node.src = "http://localhost:8080/"+"sample"
+    node.id=tempdate.yyyymmdd();
+//    node.innerText = tempdate.yyyymmdd();
+//    var node = document.createElement('<object id=obj  type="text/html" data="sample" />');
+    console.log(node.id);
+    console.log(node);
 
+    document.getElementById("list").appendChild(node);
+
+
+
+
+
+    tempdate = tempdate.addDays(1);
+  }
 }
 
 function check(){
 
 }
-
-// setting 
-// startDate.value = "2016-05-30";
-
-startDate.value = new Date().toJSON().slice(0,10);
+/*
+startDate.value = "2016-05-30";
+*/
+startDate.value = new Date().addDays(-2).toJSON().slice(0,10);
 endDate.value = new Date().toJSON().slice(0,10);
-
+changeDate();
 
 
 var x = "http://ntry.com/stats/dari/popup_pattern.php?date=2017-01-08";
