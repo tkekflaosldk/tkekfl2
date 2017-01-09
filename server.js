@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var port = process.env.PORT;
+var port = process.env.port || 8080;
 //var port = process.env.port || 80;
 //file
 var fs = require("fs");
@@ -16,6 +16,8 @@ var sqlite3 = require('sqlite3').verbose();
 //var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database(file);
 function makeTable(){
+//  stmt = "drop table if exists list"
+db.run("create table if not exists list(date text, data text);")
 //  stmt = "select ona,ose from obj where "+
 //        "ona=\""+msg[0]+"\" and "+
 //  db.each(stmt, function (err, row) {
@@ -42,12 +44,41 @@ app.get(
   '/index.css' , function(req, res){ res.sendFile(__dirname +
   '/index.css' ); });
 
-app.get(
-  '/sample' , function(req, res){ res.sendFile(__dirname +
-  '/sample.html' ); });
-
 io.sockets.on('connection', function(socket){
   io.emit('echo','hello');
+
+
+
+    socket.on('checkdate',function(date){
+      console.log(date);
+      // if database not haved..
+      db.each("select * from obj", function (err, row) {
+        if(row==undefined){
+          io.emit('reqdate',date);
+          var refreshIntervalId = setInterval(function(){
+            io.emit('fetchdate',date);clearInterval(refreshIntervalId)
+          },1000);
+    //      clearInterval(refreshIntervalId);
+        }
+      });
+    });
+
+    socket.on('insert',function(data){
+
+
+/*
+      stmt = "insert or replace into list values("
+      for (i = 0; i < data.length; i++) {
+          stmt += "\"" + msg[i] + "\""
+          if (i < data.length - 1)
+              stmt += ", "
+      } stmt += ");"
+/**/
+      db.run("insert or replace into list values("+data.date+","+data.data+")");
+    });
+
+
+
     socket.on('connection', function(){
       console.log('connect : '+socket)
     });
@@ -68,6 +99,6 @@ io.sockets.on('echo', function(msg){
 io.emit(msg+"sv")
 });
 
-http.listen(process.env.PORT, function(){
+http.listen(port, function(){
     console.log('SERVER IS READY FOR [*:'+port+']');
 });

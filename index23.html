@@ -20,13 +20,15 @@
 var socket = io();
 var startDateValue = null;
 var endDateValue = null;
+
 function changeDate(){
   var arr1 = startDate.value.split('-');
   var arr2 = endDate.value.split('-');
   startDateValue = new Date(arr1[0], arr1[1], arr1[2]);
   endDateValue   = new Date(arr2[0], arr2[1], arr2[2]);
 }
-function diffDays(d1, d2){
+function diffDays(d1, d2)
+{
   var ndays;
   var tv1 = d1.valueOf();  // msec since 1970
   var tv2 = d2.valueOf();
@@ -35,18 +37,23 @@ function diffDays(d1, d2){
   ndays = Math.round(ndays - 0.5);
   return ndays;
 }
-Date.prototype.addDays = function(days){
+Date.prototype.addDays = function(days)
+{
     var dat = new Date(this.valueOf());
     dat.setDate(dat.getDate() + days);
     return dat;
 }
-Date.prototype.yyyymmdd = function(){
+
+Date.prototype.yyyymmdd = function()
+{
     var yyyy = this.getFullYear().toString();
     var mm = (this.getMonth() + 1).toString();
     var dd = this.getDate().toString();
 
     return yyyy+'-' + (mm[1] ? mm : '0'+mm[0])+'-' + (dd[1] ? dd : '0'+dd[0]);
 }
+
+
 function checkDate(){
   var diff = diffDays(startDateValue, endDateValue)+1;
   console.log(diff+":diff")
@@ -56,38 +63,62 @@ function checkDate(){
     tempdate = tempdate.addDays(1);
   }
 }
+
 socket.on('reqdate',function(date){
   console.log('req'+date)
   gridDate(date);
+//  sendDate(date);
 });
-socket.on('fetchdate',function(date){
-  sendDate(date);
-});
+var node
 function gridDate(date){
   var date = date||'2016-05-30';
-  var node = document.createElement('iframe');
+  console.log('grddate'+date)
+   node = document.createElement('iframe');
+  console.log(date);
+  console.log(typeof(date))
   node.id=date;
-  node.src = "http://ntry.com/stats/dari/popup_pattern.php?date="+date;
+  node.src = "http://localhost:8080/"+"sample"//(node.id=date);
   list.appendChild(node)
+
+  node.addEventListener("onload", function(){
+      sendDate(date);
+  });
+  var scri = document.createElement('script');
+  var func = document.createTextNode('readySend("'+date+'")');
+  scri.appendChild(func)
+  node.appendChild(scri)
+  /*
+  scri.innerText = "sendDate("+date+")";
+  node.appendChild(doing);
+  */
+  //node.contentWindow.document.firstChild.getElementsByTagName('h1')[0].innerText
+  //document.getElementsByTagName('iframe')[0].contentWindow.document.firstChild
+  //var a = document.getElementsByTagName('h1')[0].innerText
+/*
+  var a = node.contentWindow.document.getElementsByTagName('h1')[0].innerText;
+  document.getElementsByTagName('h1')
+  document.getElementsByClassName('inner')
+  document.getElementById("list").appendChild(node);
+/**/
 }
+function readySend(date){
+  if(document.getElementById(date)){
+    setInterval(sendDate(date), 1000);
+  }
+  else {
+    setInterval(readySend, 1000);
+  }
+}
+
 function sendDate(date){
+  if(!date) return setInterval(sendDate(date), 1000)
   var node = document.getElementById(date);
   console.log(node)
-  //node.contentWindow.document.getElementsByClassName("pattern_graph")[0].getElementsByClassName('main_tab')[0].childNodes[7].firstChild.click();
-  //var arr = sumary(node.contentWindow.document.firstChild.getElementsByClassName('inner')[0])
-}
 
-var inners
-// document.getElementsByClassName('inner')[0]
-function sumary(inner){
-  inners = inner
-  var nodearray = inner.childNodes;
-  for(var i = 0 ; i < nodearray.length ; i++ ){
-    if(nodearray[i]==undefined){ continue; }
-    // dt / dd 긁기
-
-
-  }
+  var a=  node.contentWindow.document.firstChild.getElementsByTagName('h1')[0].innerText
+  var b=  node.contentWindow.document.firstChild.getElementsByClassName('inner')[0].innerText
+  console.log(a)
+  console.log(b)
 }
 
 /*
